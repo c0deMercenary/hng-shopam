@@ -4,11 +4,12 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import React, { useContext, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import data from "@/data/products.json";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AppContext } from "@/context/product";
@@ -28,6 +29,11 @@ const Checkout = () => {
   const deleteProduct = (id: number) => {
     const product = state.products.filter((item: any) => item.id !== id);
     dispatch({ type: "DELETE_PRODUCT", payload: id });
+  };
+
+  const handleCheckout = () => {
+    dispatch({ type: "DELETE_ALL_PRODUCTS" });
+    router.push("checkout/success");
   };
 
   return (
@@ -59,6 +65,14 @@ const Checkout = () => {
           </View>
         )}
       />
+      {state?.products.length !== 0 && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => handleCheckout()}
+        >
+          <Text style={styles.buttonText}>Complete</Text>
+        </TouchableOpacity>
+      )}
     </SafeAreaView>
   );
 };
@@ -81,5 +95,17 @@ const styles = StyleSheet.create({
     height: 80,
     width: 100,
     borderRadius: 10,
+  },
+  button: {
+    backgroundColor: "blue",
+    marginVertical: 20,
+    marginHorizontal: 10,
+    padding: 15,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "600",
   },
 });

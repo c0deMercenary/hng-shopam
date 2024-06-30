@@ -25,6 +25,8 @@ const reducer = (state, action) => {
           }
         case 'DELETE_PRODUCT':
             return { ...state, products: state.products.filter(product => product.id !== action.payload) }
+        case 'DELETE_ALL_PRODUCTS':
+            return { ...state, products: [] }
         default:
             return state
     }

@@ -43,7 +43,7 @@ export default function HomeScreen() {
         numColumns={2}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item?.id.toString()}
-        contentContainerStyle={{ padding: 8, gap: 10 }}
+        contentContainerStyle={{ gap: 15, padding: 25 }}
         columnWrapperStyle={{ gap: 15 }}
       />
     </SafeAreaView>
@@ -56,10 +56,11 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 8,
     gap: 4,
+    width: "50%",
   },
   image: {
-    height: 150,
-    width: 150,
+    height: 120,
+    // width: "50%",
   },
   productText: {
     fontSize: 16,
