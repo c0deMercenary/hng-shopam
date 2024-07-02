@@ -32,19 +32,13 @@ When you're ready, run:
 ```bash
 npm run reset-project
 ```
+## Screenshots
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+## Screenshot
+![Home](https://i.pinimg.com/474x/f3/de/cb/f3decbc638f97468196e813cb434eb6a.jpg)
+![Cart](https://i.pinimg.com/474x/46/41/be/4641be88e21dcf9a5bec03792be4a7f9.jpg)
+![Order](https://i.pinimg.com/474x/4a/19/53/4a19531c45394aad08e41a42abf6522e.jpg)
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Download Link
+[App Link](https://drive.google.com/file/d/1GbxPAuRadIk21mNdT5m3-pWdySlfE57Z/view?usp=sharing)
