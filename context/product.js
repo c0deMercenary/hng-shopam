@@ -12,6 +12,8 @@ const initialState = {
 
 const reducer = (state, action) => {
     switch(action.type) {
+        case 'ADD_PRODUCTS':
+            return { ...state, products: action.payload }
         case 'ADD_PRODUCT':
           if(state.products.find(product => product.id === action.payload.id)) {
             return { ...state, products: state.products.map(product => {
