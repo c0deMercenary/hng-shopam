@@ -10,7 +10,6 @@ import {
 import React, { useContext, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useLocalSearchParams } from "expo-router";
-import data from "@/data/products.json";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AppContext } from "@/context/product";
 
@@ -18,13 +17,13 @@ const Checkout = () => {
   const orders: any = [];
   const { state, dispatch } = useContext(AppContext);
 
+  const imgUrlEndpoint = "https://api.timbu.cloud/images/";
+
   // useEffect(() => {
   //   const temp = data.find((item) => item.id === Number(checkout));
   //   orders.push(temp);
   //   // console.log(orders);
   // }, [checkout]);
-
-  console.log(state);
 
   const deleteProduct = (id: number) => {
     const product = state.products.filter((item: any) => item.id !== id);
@@ -36,17 +35,18 @@ const Checkout = () => {
     router.push("checkout/success");
   };
 
+
   return (
     <SafeAreaView>
       <FlatList
-        data={state.products}
+        data={state.cart}
         renderItem={({ item }: any) => (
           <View style={styles.card}>
             <View
               style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
             >
               <Image
-                source={{ uri: item.image }}
+                source={{ uri: imgUrlEndpoint + item?.photos[0]?.url }}
                 resizeMode="cover"
                 style={styles.image}
               />
@@ -54,8 +54,8 @@ const Checkout = () => {
                 <Text style={{ fontWeight: "700", fontSize: 18 }}>
                   {item?.name}
                 </Text>
-                <Text style={{ fontSize: 13, fontWeight: "500" }}>
-                  ${item?.price} | x{item?.quantity}
+                <Text style={{ fontSize: 15, fontWeight: "500" }}>
+                  ${item?.current_price[0]["NGN"][0]}
                 </Text>
               </View>
             </View>
@@ -65,7 +65,7 @@ const Checkout = () => {
           </View>
         )}
       />
-      {state?.products.length !== 0 && (
+      {state?.cart.length !== 0 && (
         <TouchableOpacity
           style={styles.button}
           onPress={() => handleCheckout()}

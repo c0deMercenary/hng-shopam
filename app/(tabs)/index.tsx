@@ -1,16 +1,15 @@
+import React, { useContext, useEffect, useMemo } from "react";
 import {
   Image,
   StyleSheet,
-  Platform,
   Text,
   FlatList,
   View,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import data from "@/data/products.json";
 import { router } from "expo-router";
-import { useContext, useEffect, useMemo } from "react";
 import { AppContext } from "@/context/product";
 
 export default function HomeScreen() {
@@ -36,7 +35,9 @@ export default function HomeScreen() {
   }, []);
 
   const addProductToCart = (id: number) => {
-    const product = data.find((item) => item.id === id);
+    const product = state.products.find(
+      (item: { id: number }) => item.id == id
+    );
     dispatch({ type: "ADD_PRODUCT", payload: product });
     router.push(`(tabs)/checkout`);
   };
@@ -46,10 +47,7 @@ export default function HomeScreen() {
       <FlatList
         data={products}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.productCard}
-            onPress={() => addProductToCart(item.id)}
-          >
+          <Pressable style={styles.productCard}>
             <Image
               source={{ uri: imgUrlEndpoint + item?.photos[0]?.url }}
               resizeMode="cover"
@@ -59,41 +57,67 @@ export default function HomeScreen() {
             <Text style={styles.price}>
               ${item?.current_price[0]["NGN"][0]}
             </Text>
-          </TouchableOpacity>
+            <Text style={{ fontWeight: "500" }}>{item?.description}</Text>
+            <TouchableOpacity
+              style={{
+                width: "100%",
+                backgroundColor: "blue",
+                padding: 10,
+                borderRadius: 5,
+              }}
+              onPress={() => addProductToCart(item.id)}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  fontWeight: "700",
+                }}
+              >
+                Add
+              </Text>
+            </TouchableOpacity>
+          </Pressable>
         )}
-        numColumns={2}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item?.id.toString()}
-        contentContainerStyle={{
-          padding: 20,
-          gap: 10,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        columnWrapperStyle={{ gap: 8, padding: 2 }}
+        contentContainerStyle={styles.contentContainer}
       />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    gap: 20,
+    padding: 10,
+  },
+  columnWrapper: {
+    padding: 5,
+    gap: 5,
+  },
   productCard: {
     backgroundColor: "#fff",
-    padding: 10,
     borderRadius: 8,
-    gap: 4,
-    width: "50%",
+    alignItems: "flex-start",
+    padding: 15,
+    gap: 10,
+    // width: "50%",
   },
   image: {
-    height: 120,
+    width: "100%", // Ensures the image takes the full width of the container
+    aspectRatio: 1,
+    borderRadius: 5,
   },
   productText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold",
+    textAlign: "center",
   },
   price: {
     fontSize: 14,
     fontWeight: "700",
     color: "#888",
+    textAlign: "center",
   },
 });

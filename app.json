@@ -1,46 +1,64 @@
 {
-  "expo": {
-    "name": "hng-shopam",
-    "slug": "hng-shopam",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+  "name": "hng-shopam",
+  "slug": "hng-shopam",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "icon": "./assets/images/icon.png",
+  "scheme": "myapp",
+  "userInterfaceStyle": "automatic",
+  "splash": {
+    "image": "./assets/images/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
+  },
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.henryrx.hngshopam"
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/images/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.henryrx.hngshopam"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.henryrx.hngshopam"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
+    "package": "com.henryrx.hngshopam"
+  },
+  "web": {
+    "bundler": "metro",
+    "output": "static",
+    "favicon": "./assets/images/favicon.png"
+  },
+  "plugins": [
+    "expo-router"
+  ],
+  "experiments": {
+    "typedRoutes": true
+  },
+  "extra": {
+    "router": {
+      "origin": false
+    }
+  },
+  "owner": "henryrx",
+  "sdkVersion": "51.0.0",
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
+  "expo": {
     "extra": {
       "router": {
         "origin": false
       },
       "eas": {
-        "projectId": "8e54d246-824e-414b-911b-f71fdc9bab2b"
+        "projectId": "681c4d6d-85b1-4cae-9725-f02e608cc188"
       }
+    },
+    "android": {
+      "package": "com.henryrx.hngshopam"
+    },
+    "ios": {
+      "bundleIdentifier": "com.henryrx.hngshopam"
     }
   }
 }

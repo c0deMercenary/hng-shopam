@@ -7,7 +7,8 @@ import { createContext, useContext, useReducer } from "react";
 export const AppContext = createContext();
 
 const initialState = {
-    products: []
+    products: [],
+    cart: []
 }
 
 const reducer = (state, action) => {
@@ -15,20 +16,20 @@ const reducer = (state, action) => {
         case 'ADD_PRODUCTS':
             return { ...state, products: action.payload }
         case 'ADD_PRODUCT':
-          if(state.products.find(product => product.id === action.payload.id)) {
-            return { ...state, products: state.products.map(product => {
+          if(state.cart.find(product => product.id === action.payload.id)) {
+            return { ...state, cart: state.cart.map(product => {
               if(product.id === action.payload.id) {
-                return { ...product, quantity: product.quantity + 1 }
+                return { ...cart, quantity: cart.quantity + 1 }
               }
-              return product
+              return cart
             }) }
           }else {
-            return { ...state, products: [...state.products, action.payload] }
+            return { ...state, cart: [...state.cart, action.payload] }
           }
         case 'DELETE_PRODUCT':
-            return { ...state, products: state.products.filter(product => product.id !== action.payload) }
+            return { ...state, products: state.cart.filter(product => product.id !== action.payload) }
         case 'DELETE_ALL_PRODUCTS':
-            return { ...state, products: [] }
+            return { ...state, cart: [] }
         default:
             return state
     }
